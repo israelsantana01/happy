@@ -1,8 +1,19 @@
+// index, show, create, update, delete
+
 import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 import Orphanages from '../database/models/Orphanage';
 
 export default {
+
+  async index(request: Request, response: Response) {
+    const orphanagesRepository = getRepository(Orphanages);
+
+    const orphanages = await orphanagesRepository.find();
+
+    return response.json(orphanages);
+  },
+
   async create(request: Request, response: Response) {
     const {
       name,
