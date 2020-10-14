@@ -1,6 +1,7 @@
 import React from 'react';
 
-import './assets/styles/global.css';
+import './styles/pages/global.css';
+import 'leaflet/dist/leaflet.css';
 
 import Routes from './routes';
 
