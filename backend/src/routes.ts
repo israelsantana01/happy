@@ -12,7 +12,7 @@ routes.post('/orphanages', upload.array('images'), OrphanagesController.create);
 
 //GET
 routes.get('/orphanages', OrphanagesController.index);
-routes.post('/orphanages/:id', OrphanagesController.show);
+routes.get('/orphanages/:id', OrphanagesController.show);
 
 export default routes;
 
