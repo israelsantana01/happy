@@ -34,10 +34,16 @@ export default function OrphanagesMap() {
 
   return (
     <View style={styles.container}>
-      <MapView provider={PROVIDER_GOOGLE} style={styles.map} initialRegion={{
-        latitude: -3.9374073,
-        longitude: -38.5362951, latitudeDelta: 0.008, longitudeDelta: 0.008,
-      }} >
+      <MapView 
+        provider={PROVIDER_GOOGLE} 
+        style={styles.map} 
+        initialRegion={{
+          latitude: -3.8377197,
+          longitude: -38.5747682, 
+          latitudeDelta: 0.008, 
+          longitudeDelta: 0.008,
+        }} 
+      >
 
         {orphanages.map(orphanage => {
           return (
