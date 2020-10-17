@@ -1,7 +1,8 @@
 import React from 'react';
 import MapView, { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
-import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { RectButton } from 'react-native-gesture-handler';
 
 import mapMarker from '../images/map-marker.png';
 
@@ -11,30 +12,19 @@ export default function OrphanagesMap() {
   function handleNavigateToOrphanageDetails() {
     navigation.navigate('OrphanageDetails');
   } 
+  
+  function handleNavigateToCreateOrphanage() {
+    navigation.navigate('SelectMapPosition');
+  } 
 
   return (
     <View style={styles.container}>
-      <MapView
-        provider={PROVIDER_GOOGLE}
-        style={styles.map}
-        initialRegion={{
-          latitude: -3.9374073,
-          longitude: -38.5362951,
-          latitudeDelta: 0.008,
-          longitudeDelta: 0.008,
-        }}
-      >
-        <Marker
-          icon={mapMarker}
-          coordinate={{
-            latitude: -3.9374073,
-            longitude: -38.5362951,
-          }}
-          calloutAnchor={{
-            x: 2.7,
-            y: 0.8,
-          }}
-        >
+      <MapView provider={PROVIDER_GOOGLE} style={styles.map} initialRegion={{ latitude: -3.9374073,
+          longitude: -38.5362951, latitudeDelta: 0.008, longitudeDelta: 0.008, }} >
+
+        <Marker icon={mapMarker} coordinate={{ latitude: -3.9374073, longitude: -38.5362951, }}
+          calloutAnchor={{ x: 2.7, y: 0.8, }} >
+
           <Callout tooltip onPress={handleNavigateToOrphanageDetails}>
             <View style={styles.calloutContainer}>
               <Text style={styles.calloutText}>
@@ -42,15 +32,18 @@ export default function OrphanagesMap() {
               </Text>
             </View>
           </Callout>
+          
         </Marker>
       </MapView>
 
       <View style={styles.footer}>
         <Text style={styles.footerText}>2 orfanatos encontrados</Text>
 
-        <TouchableOpacity style={styles.createOrphanageButton} onPress={() => { }}>
-          <Text>+</Text>
-        </TouchableOpacity>
+        <RectButton style={styles.createOrphanageButton} onPress= {handleNavigateToCreateOrphanage}>
+          <Text style={styles.plus}>
+            +
+          </Text>
+        </RectButton>
       </View>
     </View>
   );
@@ -110,5 +103,10 @@ const styles = StyleSheet.create({
 
     justifyContent: 'center',
     alignItems: 'center'
+  },
+
+  plus: {
+    fontSize: 30,
+    color: '#fff'
   }
 });
