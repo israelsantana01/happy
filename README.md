@@ -68,4 +68,4 @@ Project development at **Next Level Week** event, by **Rocketseat**.
 
 ---
 
-Development by Israel da Silva Santana 😎
+Developed by Israel da Silva Santana 😎
